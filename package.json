@@ -1,0 +1,26 @@
+{
+  "name": "discord-smartbot",
+  "version": "1.0.0",
+  "description": "Discord bot intelligente con NLP, memoria contestuale e gestione policy",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["discord", "bot", "nlp", "ai"],
+  "author": "Fl4chi",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.1",
+    "better-sqlite3": "^9.2.2",
+    "natural": "^6.10.4",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
