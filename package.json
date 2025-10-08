@@ -1,26 +1,64 @@
 {
-  "name": "discord-smartbot",
-  "version": "1.0.0",
-  "description": "Discord bot intelligente con NLP, memoria contestuale e gestione policy",
+  "name": "minfoai-discord-bot",
+  "version": "2.0.0",
+  "description": "MinfoAI Discord Bot - AI-Powered Moderation, XP Gamification, Web Dashboard e Assistant",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "web": "node src/web/dashboard.js",
+    "migrate": "node migrations/migrate.js",
+    "test": "jest"
   },
-  "keywords": ["discord", "bot", "nlp", "ai"],
+  "keywords": [
+    "discord",
+    "bot",
+    "ai",
+    "moderation",
+    "nlp",
+    "xp",
+    "gamification",
+    "dashboard",
+    "minfoai"
+  ],
   "author": "Fl4chi",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.1",
     "better-sqlite3": "^9.2.2",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "socket.io": "^4.7.4",
     "natural": "^6.10.4",
-    "node-cron": "^3.0.3"
+    "sentiment": "^5.0.2",
+    "openai": "^4.20.1",
+    "tensorflow": "^4.15.0",
+    "axios": "^1.6.2",
+    "node-cron": "^3.0.3",
+    "winston": "^3.11.0",
+    "chalk": "^4.1.2",
+    "moment": "^2.29.4",
+    "canvas": "^2.11.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0"
   },
   "engines": {
-    "node": ">=18.0.0"
-  }
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fl4chi/discord-smartbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fl4chi/discord-smartbot/issues"
+  },
+  "homepage": "https://github.com/Fl4chi/discord-smartbot#readme"
 }
