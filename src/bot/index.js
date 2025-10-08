@@ -1,12 +1,22 @@
 // src/bot/index.js
 // Core bot initialization and event management
-
 const { Client, GatewayIntentBits, Collection, ActivityType } = require('discord.js');
 const { loadCommands } = require('../commands');
 const { handleMessage } = require('../nlp');
 const { logAction } = require('./moderation');
 const { checkRaidProtection } = require('./antiraid');
 const db = require('../store/db');
+
+// Global error handlers
+process.on('uncaughtException', (err) => {
+  console.error('MinfoAI - Errore fatale:', err);
+  // Qui puoi loggare su file, database, inviare alert via Discord, ecc.
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('MinfoAI - Promessa non gestita:', reason);
+  // Qui puoi loggare su file, database, inviare alert via Discord, ecc.
+});
 
 /**
  * Initialize Discord bot with all necessary intents and handlers
@@ -34,10 +44,10 @@ function initBot(token) {
   // Bot ready event
   client.once('ready', async () => {
     console.log(`✅ Bot logged in as ${client.user.tag}`);
-    
+
     // Set bot activity
     client.user.setActivity('AI Assistant | /help', { type: ActivityType.Playing });
-    
+
     // Initialize database
     await db.init();
     console.log('✅ Database initialized');
@@ -58,12 +68,11 @@ function initBot(token) {
         commandName: interaction.commandName,
         timestamp: new Date()
       });
-
       await command.execute(interaction);
     } catch (error) {
       console.error('Error executing command:', error);
       const reply = { content: '❌ Errore durante l\'esecuzione del comando.', ephemeral: true };
-      
+
       if (interaction.replied || interaction.deferred) {
         await interaction.followUp(reply);
       } else {
@@ -103,7 +112,7 @@ function initBot(token) {
     try {
       // Check for raid patterns
       await checkRaidProtection(member);
-      
+
       // Log member join
       await db.logMemberJoin({
         userId: member.id,
