@@ -1,0 +1,301 @@
+/* Badge Icons CSS - Custom styles for dashboard badges with icons and animations */
+
+/* Base badge styles */
+.badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* Badge icon styles */
+.badge-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.badge:hover .badge-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Gold badge styles */
+.badge-gold {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #fff200 100%);
+  color: #8b6914;
+  border: 2px solid #ffed4e;
+  position: relative;
+}
+
+.badge-gold::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  transform: rotate(45deg);
+  animation: goldShine 3s infinite;
+}
+
+.badge-gold:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 8px 25px rgba(255, 215, 0, 0.4),
+    0 0 30px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  animation: goldGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes goldShine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+@keyframes goldGlow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+  }
+}
+
+/* Silver badge styles */
+.badge-silver {
+  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #f5f5f5 100%);
+  color: #4a4a4a;
+  border: 2px solid #d3d3d3;
+  position: relative;
+}
+
+.badge-silver::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+  transform: rotate(45deg);
+  animation: silverShine 4s infinite;
+}
+
+.badge-silver:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 8px 25px rgba(192, 192, 192, 0.4),
+    0 0 25px rgba(192, 192, 192, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: silverGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes silverShine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+@keyframes silverGlow {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(192, 192, 192, 0.6));
+  }
+  100% {
+    filter: drop-shadow(0 0 16px rgba(192, 192, 192, 0.8));
+  }
+}
+
+/* Glow effect badge */
+.badge-glow {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border: 2px solid #667eea;
+  position: relative;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.badge-glow::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.7;
+  filter: blur(8px);
+  animation: glowRotate 4s linear infinite;
+}
+
+.badge-glow:hover {
+  transform: translateY(-3px) scale(1.08);
+  animation: glowIntense 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(102, 126, 234, 0.6),
+      0 0 40px rgba(102, 126, 234, 0.4),
+      0 0 60px rgba(102, 126, 234, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(102, 126, 234, 0.8),
+      0 0 60px rgba(102, 126, 234, 0.6),
+      0 0 90px rgba(102, 126, 234, 0.4);
+  }
+}
+
+@keyframes glowRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes glowIntense {
+  0% {
+    filter: brightness(1) saturate(1);
+  }
+  100% {
+    filter: brightness(1.2) saturate(1.3);
+  }
+}
+
+/* Special animated badge variations */
+.badge-platinum {
+  background: linear-gradient(135deg, #e5e4e2 0%, #f7f7f7 25%, #e5e4e2 50%, #f7f7f7 75%, #e5e4e2 100%);
+  background-size: 200% 200%;
+  color: #666666;
+  border: 2px solid #e5e4e2;
+  animation: platinumShimmer 3s linear infinite;
+}
+
+@keyframes platinumShimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Rainbow badge */
+.badge-rainbow {
+  background: linear-gradient(45deg, 
+    #ff0000 0%, #ff8000 14%, #ffff00 28%, 
+    #80ff00 42%, #00ff00 57%, #00ff80 71%, 
+    #00ffff 85%, #0080ff 100%);
+  background-size: 200% 200%;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  animation: rainbowSlide 2s linear infinite;
+}
+
+@keyframes rainbowSlide {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Diamond badge with sparkle effect */
+.badge-diamond {
+  background: linear-gradient(135deg, #b8d4ff 0%, #e1f0ff 50%, #ffffff 100%);
+  color: #1a365d;
+  border: 2px solid #b8d4ff;
+  position: relative;
+  overflow: visible;
+}
+
+.badge-diamond::before {
+  content: '✨';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 12px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.badge-diamond::after {
+  content: '💎';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  font-size: 10px;
+  animation: sparkle 2s ease-in-out infinite 1s;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+/* Badge collections container */
+.badge-collection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .badge {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .badge-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+  }
+  
+  .badge-collection {
+    gap: 8px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .badge,
+  .badge::before,
+  .badge::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .badge:hover {
+    transform: none !important;
+  }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .badge-silver {
+    background: linear-gradient(135deg, #808080 0%, #a0a0a0 50%, #b8b8b8 100%);
+    color: #ffffff;
+  }
+  
+  .badge-platinum {
+    background: linear-gradient(135deg, #9a9a9a 0%, #b8b8b8 25%, #9a9a9a 50%, #b8b8b8 75%, #9a9a9a 100%);
+    color: #ffffff;
+  }
+  
+  .badge-diamond {
+    background: linear-gradient(135deg, #4a6fa5 0%, #6b8bc7 50%, #8dabeb 100%);
+    color: #ffffff;
+  }
+}
